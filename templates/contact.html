@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Nirvana{% endblock %}
+
+{% block content %}
+<link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+<section class="page-header bg-light">
+    <div class="container">
+        <h1 class="display-4 text-center pt-5 mt-5">Contact Us</h1>
+        <p class="lead text-center">We'd Love to Hear From You</p>
+    </div>
+</section>
+
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Information -->
+            <div class="col-md-4">
+                <div class="contact-info">
+                    <div class="info-item mb-4">
+                        <i class="fas fa-map-marker-alt fa-2x mb-3 text-primary"></i>
+                        <h4>Visit Us</h4>
+                        <p>Ghosala Street<br>Lotus Landmark<br>Vijayawada, 520012</p>
+                    </div>
+                    <div class="info-item mb-4">
+                        <i class="fas fa-phone fa-2x mb-3 text-primary"></i>
+                        <h4>Call Us</h4>
+                        <p>+91 7013071534<br>Mon-sun, 9:00 AM - 9:00 PM</p>
+                    </div>
+                    <div class="info-item mb-4">
+                        <i class="fas fa-envelope fa-2x mb-3 text-primary"></i>
+                        <h4>Email Us</h4>
+                        <p>nirvana.boutique.01@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-md-8">
+                <div class="contact-form bg-white p-4 rounded shadow-sm">
+                    <h3 class="mb-4">Send Us a Message</h3>
+
+                    <form onsubmit="sendEmail(event)">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'js/main.js'%}"></script>
+{% endblock %}

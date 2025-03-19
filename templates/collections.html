@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+{% endblock %}
+
+{% block content %}
+<!-- CSRF Token for AJAX -->
+<form method="post">
+    {% csrf_token %}
+</form>
+
+<!-- Collections Header -->
+<section class="collections-header py-5">
+    {% static "images" as baseURL %}
+    <div class="container">
+        <h1 class="text-center mb-5">Our Collections</h1>
+        <div class="collection-filters mb-4">
+            <div class="row justify-content-center">
+                <div class="collection-filters">
+                    <button class="btn btn-outline-dark active" data-filter="all">All</button>
+                    <button class="btn btn-outline-dark" data-filter="women">Women</button>
+                    <button class="btn btn-outline-dark" data-filter="men">Men</button>
+                    <button class="btn btn-outline-dark" data-filter="accessories">Accessories</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Collections -->
+<section class="featured-collections py-5">
+    <div class="container">
+        <div class="row g-4" id="collections-grid">
+            <!-- Women's Collection -->
+            {% for item in women_items %}
+            <div class="col-md-6 col-lg-4 collection-item" data-category="women">
+                <div class="collection-card">
+                    <div class="collection-image">
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                        <div class="collection-overlay">
+                            <div class="collection-info">
+                                <h3>{{ item.name }}</h3>
+                                <p>{{ item.description }}</p>
+                                <p class="offer text-success">{{ item.offer }}</p>
+                                <a href="{% url 'womens_collection' %}" class="btn btn-outline-light">Explore</a>
+                                <button class="btn btn-favorite {% if item in request.user.favorite_women.all %}favorited{% endif %}"
+                                    data-item-id="{{ item.id }}" data-item-type="women">
+                                    {% if item in request.user.favorite_women.all %}
+                                    ❤️ Remove from Favorites
+                                    {% else %}
+                                    🤍 Add to Favorites
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Men's Collection -->
+            {% for item in men_items %}
+            <div class="col-md-6 col-lg-4 collection-item" data-category="men">
+                <div class="collection-card">
+                    <div class="collection-image">
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                        <div class="collection-overlay">
+                            <div class="collection-info">
+                                <h3>{{ item.name }}</h3>
+                                <p>{{ item.description }}</p>
+                                <p class="offer text-success">{{ item.offer }}</p>
+                                <a href="{% url 'mens_collection' %}" class="btn btn-outline-light">Explore</a>
+                                <button class="btn btn-favorite {% if item in request.user.favorite_men.all %}favorited{% endif %}"
+                                    data-item-id="{{ item.id }}" data-item-type="men">
+                                    {% if item in request.user.favorite_men.all %}
+                                    ❤️ Remove from Favorites
+                                    {% else %}
+                                    🤍 Add to Favorites
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Accessories Collection -->
+            {% for item in accessories %}
+            <div class="col-md-6 col-lg-4 collection-item" data-category="accessories">
+                <div class="collection-card">
+                    <div class="collection-image">
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                        <div class="collection-overlay">
+                            <div class="collection-info">
+                                <h3>{{ item.name }}</h3>
+                                <p>{{ item.description }}</p>
+                                <p class="offer text-success">{{ item.offer }}</p>
+                                <a href="{% url 'accessories_collection' %}" class="btn btn-outline-light">Explore</a>
+                                <button class="btn btn-favorite {% if item in request.user.favorite_accessories.all %}favorited{% endif %}"
+                                    data-item-id="{{ item.id }}" data-item-type="accessory">
+                                    {% if item in request.user.favorite_accessories.all %}
+                                    ❤️ Remove from Favorites
+                                    {% else %}
+                                    🤍 Add to Favorites
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Latest Items -->
+<section class="latest-items py-5 bg-light" id="new-arrivals">
+    <div class="container">
+        <h2 class="text-center mb-5">Latest Arrivals</h2>
+        <div class="row g-4">
+            {% for item in latest_arrivals %}
+            <div class="col-md-6 col-lg-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                        <div class="product-overlay">
+                            <div class="product-actions">
+                                <a href="#" class="btn btn-outline-light btn-sm">Quick View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info p-3">
+                        <h5 class="product-title">{{ item.name }}</h5>
+                        <p class="product-category text-muted">{{ item.category }}</p>
+                        <p class="offer text-success">{{ item.offer }}</p>
+                        <button class="btn btn-favorite {% if item in request.user.favorite_latest.all %}favorited{% endif %}"
+                            data-item-id="{{ item.id }}" data-item-type="latest">
+                            {% if item in request.user.favorite_latest.all %}
+                            ❤️ Remove from Favorites
+                            {% else %}
+                            🤍 Add to Favorites
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/collections.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,310 @@
+/* ========================================= */
+/* GENERAL STYLING */
+/* ========================================= */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fefefe;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========================================= */
+/* HERO SECTION */
+/* ========================================= */
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #eee;
+}
+
+/* HERO IMAGES */
+.women-hero {
+    background-image: url("{% static 'images/hero-women.jpg' %}");
+}
+
+.men-hero {
+    background-image: url("{% static 'images/hero-men.jpg' %}");
+}
+
+.accessories-hero {
+    background-image: url("{% static 'images/hero-accessories.jpg' %}");
+}
+
+/* ========================================= */
+/* COLLECTIONS HEADER */
+/* ========================================= */
+.collections-header {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.collections-header h1 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.collection-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.collection-filters .btn {
+    padding: 10px 24px;
+    border: 2px solid #333;
+    border-radius: 25px;
+    background-color: transparent;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.collection-filters .btn.active,
+.collection-filters .btn:hover {
+    background-color: #222;
+    color: #fff;
+}
+
+/* ========================================= */
+/* FEATURED COLLECTIONS */
+/* ========================================= */
+.featured-collections {
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.collection-item {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.collection-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+/* Image Styling */
+.collection-image {
+    width: 100%;
+    height: 260px;
+    position: relative;
+    overflow: hidden;
+}
+
+.collection-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.collection-item:hover .collection-image img {
+    transform: scale(1.1);
+}
+
+/* Overlay */
+.collection-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.collection-item:hover .collection-overlay {
+    opacity: 1;
+}
+
+.collection-info {
+    color: #fff;
+    text-align: center;
+}
+
+.collection-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+}
+
+.collection-info .offer {
+    font-size: 1rem;
+    color: #ffd700;
+}
+
+/* Favorite Button */
+.btn-favorite {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 1.2rem;
+    color: #ff0000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-favorite:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/* ========================================= */
+/* LATEST ITEMS */
+/* ========================================= */
+.latest-items {
+    padding: 40px 20px;
+}
+
+.product-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.product-image {
+    width: 100%;
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-info h5 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.product-info p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.product-info .offer {
+    font-size: 1rem;
+    color: #ff0000;
+}
+
+/* ========================================= */
+/* RESPONSIVENESS */
+/* ========================================= */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 280px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .collection-filters .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    .collection-image,
+    .product-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        height: 220px;
+    }
+
+    .collection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collection-image,
+    .product-image {
+        height: 160px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+}

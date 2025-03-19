@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Favorites - Nirvana{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+{% block content %}
+{% static "images" as baseURL %}
+<section class="favorites-header py-5">
+    <div class="container">
+        <h1 class="text-center mb-5">Your Favorites</h1>
+        <div class="row g-4">
+            <!-- Men's Favorites -->
+            {% if favorite_men %}
+            <div class="col-12">
+                <h2>Men's Collection</h2>
+            </div>
+            {% for item in favorite_men %}
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-fluid">
+                    <h5>{{ item.name }}</h5>
+                    <button class="btn btn-favorite" data-item-id="{{ item.id }}" data-item-type="men">
+                        ❤️ Remove from Favorites
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <!-- Women's Favorites -->
+            {% if favorite_women %}
+            <div class="col-12">
+                <h2>Women's Collection</h2>
+            </div>
+            {% for item in favorite_women %}
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-fluid">
+                    <h5>{{ item.name }}</h5>
+                    <button class="btn btn-favorite" data-item-id="{{ item.id }}" data-item-type="women">
+                        ❤️ Remove from Favorites
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <!-- Accessories Favorites -->
+            {% if favorite_accessories %}
+            <div class="col-12">
+                <h2>Accessories</h2>
+            </div>
+            {% for item in favorite_accessories %}
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-fluid">
+                    <h5>{{ item.name }}</h5>
+                    <button class="btn btn-favorite" data-item-id="{{ item.id }}" data-item-type="accessory">
+                        ❤️ Remove from Favorites
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <!-- Latest Arrivals Favorites -->
+            {% if favorite_latest %}
+            <div class="col-12">
+                <h2>Latest Arrivals</h2>
+            </div>
+            {% for item in favorite_latest %}
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-fluid">
+                    <h5>{{ item.name }}</h5>
+                    <button class="btn btn-favorite" data-item-id="{{ item.id }}" data-item-type="latest">
+                        ❤️ Remove from Favorites
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript to handle removing items from favorites -->
+<script src="{% static 'js/favorite.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirvana - Home</title>
+    <!-- Load Static Files -->
+    {% load static %}
+    {% static "images" as baseURL %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Discover Your Style</h1>
+            <p class="hero-subtitle">Elevate Your Wardrobe</p>
+            <a href="{% url 'collections' %}" class="btn btn-hero">EXPLORE NOW</a>
+        </div>
+        <div class="hero-images">
+            <div class="hero-image-left" style="background-image: url('{{baseURL}}/hero-1.jpg')"></div>
+            <div class="hero-image-right" style="background-image: url('{{baseURL}}/hero-2.jpg')"></div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="featured-categories">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="category-card" style="background-image: url('{{baseURL}}/women.webp')">
+                        <div class="category-content">
+                            <h3>Women</h3>
+                            <a href="{% url 'womens_collection' %}" class="btn btn-outline-light">View Collection</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card" style="background-image: url('{{baseURL}}/men.jpg')">
+                        <div class="category-content">
+                            <h3>Men</h3>
+                            <a href="{% url 'mens_collection' %}" class="btn btn-outline-light">View Collection</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card" style="background-image: url('{{baseURL}}/accessories.webp')">
+                        <div class="category-content">
+                            <h3>Accessories</h3>
+                            <a href="{% url 'accessories_collection' %}" class="btn btn-outline-light">View
+                                Collection</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="new-arrivals">
+        <div class="container">
+            <h2 class="section-title">New Arrivals</h2>
+            <div class="row">
+                {% for i in '123456'|make_list %}
+                <div class="col-md-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="{{baseURL}}/product-{{i}}.webp" alt="Product {{i}}">
+                            <div class="product-overlay">
+                                <a href="{% url 'collections' %}" class="btn btn-light btn-sm">View Details</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            {% if i == '1' %}
+                            <h5>Summer Wear</h5>
+                            {% elif i == '2' %}
+                            <h5>Casual Wear</h5>
+                            {% elif i == '3' %}
+                            <h5>Men's Wear</h5>
+                            {% elif i == '4' %}
+                            <h5>Casual Wear</h5>
+                            {% elif i == '5' %}
+                            <h5>Women Accessories</h5>
+                            {% elif i == '6' %}
+                            <h5>Men Accessories</h5>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection Banner -->
+    <section class="collection-banner" style="background-image: url('{{baseURL}}/banner.jpg')">
+        <div class="container">
+            <div class="banner-content">
+                <h2>New Arrivals 2025</h2>
+                <p>Discover the latest trends and styles</p>
+                <a href="{% url 'latest_arrivals' %}" class="btn btn-light">View Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed -->
+    <section class="instagram-feed">
+        <div class="container">
+            <h2 class="section-title">Follow Us @nirvana_boutique_01</h2>
+            <div class="insta-grid">
+                {% for i in '123456'|make_list %}
+                <div class="insta-item">
+                    <img src="{{baseURL}}/instagram-{{i}}.webp" alt="Instagram {{i}}">
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get updates on new arrivals and special offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    {% include 'footer.html' %}
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

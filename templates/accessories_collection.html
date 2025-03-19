@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+
+{% block title %}Accessories Collection - Nirvana{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+{% endblock %}
+
+{% block content %}
+<!-- CSRF Token for AJAX -->
+<form method="post">
+    {% csrf_token %}
+</form>
+
+<!-- Hero Section with Slider -->
+<section id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    {% static "images" as baseURL %}
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+
+    <!-- Carousel Items -->
+    <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="hero-slide" style="background-image: url('{{ baseURL }}/acc-slider-1.jpg');">
+                <div class="container">
+                    <div class="row align-items-center min-vh-100">
+                        <div class="col-lg-6">
+                            <div class="hero-content text-white">
+                                <h1 class="display-4 fw-bold">Jewelry Collection</h1>
+                                <p class="lead">Timeless pieces for every occasion</p>
+                                <a href="#jewelry" class="btn btn-light btn-lg">View Collection</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <div class="hero-slide" style="background-image: url('{{ baseURL }}/acc-slider-2.jpg');">
+                <div class="container">
+                    <div class="row align-items-center min-vh-100">
+                        <div class="col-lg-6">
+                            <div class="hero-content text-white">
+                                <h1 class="display-4 fw-bold">Designer Bags</h1>
+                                <p class="lead">Complete your look with our exclusive bags</p>
+                                <a href="#bags" class="btn btn-light btn-lg">Explore More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+            <div class="hero-slide" style="background-image: url('{{ baseURL }}/acc-slider-3.jpg');">
+                <div class="container">
+                    <div class="row align-items-center min-vh-100">
+                        <div class="col-lg-6">
+                            <div class="hero-content text-white">
+                                <h1 class="display-4 fw-bold">Scarves & Belts</h1>
+                                <p class="lead">The perfect finishing touches</p>
+                                <a href="#scarves" class="btn btn-light btn-lg">Discover More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</section>
+
+<!-- Accessories Collection Header -->
+<section class="collection-header py-5">
+    <div class="container">
+        <h1 class="text-center mb-5">Accessories Collection</h1>
+    </div>
+</section>
+
+<!-- Accessories Categories
+<section class="collection-categories py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="category-box">
+                    <h3>Jewelry</h3>
+                    <div class="category-image" style="background-image: url('{{ baseURL }}/acc-jewelry.jpg');"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-box">
+                    <h3>Bags</h3>
+                    <div class="category-image" style="background-image: url('{{ baseURL }}/acc-bags.jpg');"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-box">
+                    <h3>Scarves & Belts</h3>
+                    <div class="category-image" style="background-image: url('{{ baseURL }}/acc-scarves.jpg');"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ -->
+
+<!-- Accessories Products -->
+<section class="products-grid py-5">
+    <div class="container">
+        <div class="row g-4">
+            {% for item in accessories %}
+            <div class="col-md-6 col-lg-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                        <div class="product-overlay">
+                            <div class="product-actions">
+                                <a href="#" class="btn btn-outline-light btn-sm">Quick View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info p-3">
+                        <h5 class="product-title">{{ item.name }}</h5>
+                        <p class="product-category text-muted">{{ item.get_category_display }}</p>
+                        <p class="product-description">{{ item.description }}</p>
+                        <button class="btn btn-favorite {% if item in request.user.favorite_accessories.all %}favorited{% endif %}"
+                            data-item-id="{{ item.id }}" data-item-type="accessory">
+                            {% if item in request.user.favorite_accessories.all %}
+                            ❤️ Remove from Favorites
+                            {% else %}
+                            🤍 Add to Favorites
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/collections.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

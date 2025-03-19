@@ -1,0 +1,55 @@
+{% load static %}
+<!-- Footer CSS -->
+<link rel="stylesheet" href="{% static 'css/layouts/footer.css' %}">
+<link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- About Nirvana -->
+            <div class="col-md-3">
+                <h5>About Nirvana</h5>
+                <p>Your premier destination for fashion and style.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-md-3">
+                <h5>Quick Links</h5>
+                <ul class="footer-links">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'collections' %}">Collections</a></li>
+                    <li><a href="{% url 'latest_arrivals' %}">New Arrivals</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                </ul>
+            </div>
+
+            <!-- Customer Service -->
+            <div class="col-md-3">
+                <h5>Customer Service</h5>
+                <ul class="footer-links">
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                    <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+                    <li><a href="{% url 'terms' %}">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- Connect With Us -->
+            <div class="col-md-3">
+                <h5>Connect With Us</h5>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Nirvana. All rights reserved.</p>
+        </div>
+    </div>
+</footer>

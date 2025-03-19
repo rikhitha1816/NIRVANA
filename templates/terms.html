@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Terms & Conditions - Nirvana{% endblock %}
+
+{% block content %}
+<link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+<!-- Terms Header -->
+<section class="page-header bg-light">
+    <div class="container">
+        <h1 class="display-4 text-center pt-5 mt-5">Terms & Conditions</h1>
+        <p class="lead text-center">Last updated: March 2025</p>
+    </div>
+</section>
+
+<!-- Terms Content -->
+<section class="terms-section py-5">
+    <div class="container">
+        <div class="terms-content">
+            <div class="section mb-5">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing and using this website, you accept and agree to be bound by the terms and provision
+                    of this agreement.</p>
+            </div>
+
+            <div class="section mb-5">
+                <h2>2. Use License</h2>
+                <p>Permission is granted to temporarily view the materials (information or software) on Nirvana's
+                    website for personal, non-commercial transitory viewing only.</p>
+                <p>This is the grant of a license, not a transfer of title, and under this license you may not:</p>
+                <ul>
+                    <li>Modify or copy the materials</li>
+                    <li>Use the materials for any commercial purpose</li>
+                    <li>Remove any copyright or other proprietary notations from the materials</li>
+                </ul>
+            </div>
+
+            <div class="section mb-5">
+                <h2>3. Account Registration</h2>
+                <p>To access certain features of the website, you may be required to register for an account. You
+                    agree to:</p>
+                <ul>
+                    <li>Provide accurate information</li>
+                    <li>Maintain the security of your account</li>
+                    <li>Promptly update any changes to your information</li>
+                </ul>
+            </div>
+
+            <div class="section mb-5">
+                <h2>4. Intellectual Property</h2>
+                <p>All content included on this site, such as text, graphics, logos, images, as well as the
+                    compilation thereof, and any software used on the site, is the property of Nirvana or its
+                    suppliers and protected by copyright and other laws.</p>
+            </div>
+
+            <div class="section mb-5">
+                <h2>5. User Content</h2>
+                <p>By posting, uploading, or sharing any content on our website, you grant us a non-exclusive,
+                    royalty-free license to use, modify, publicly perform, publicly display, reproduce, and
+                    distribute such content.</p>
+            </div>
+
+            <div class="section mb-5">
+                <h2>6. Disclaimer</h2>
+                <p>The materials on Nirvana's website are provided on an 'as is' basis. Nirvana makes no warranties,
+                    expressed or implied, and hereby disclaims and negates all other warranties including, without
+                    limitation, implied warranties or conditions of merchantability, fitness for a particular
+                    purpose, or non-infringement of intellectual property or other violation of rights.</p>
+            </div>
+
+            <div class="section mb-5">
+                <h2>7. Limitations</h2>
+                <p>In no event shall Nirvana or its suppliers be liable for any damages (including, without
+                    limitation, damages for loss of data or profit, or due to business interruption) arising out of
+                    the use or inability to use the materials on Nirvana's website.</p>
+            </div>
+
+            <div class="section mb-5">
+                <h2>8. Contact Information</h2>
+                <p>If you have any questions about these Terms, please contact us at:</p>
+                <p>Email: legal@nirvana.com<br>
+                    Phone: +1 (555) 123-4567</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="{% static 'js/main.js' %}"></script>

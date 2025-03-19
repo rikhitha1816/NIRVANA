@@ -1,0 +1,161 @@
+/* Login Section */
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+}
+
+
+/* Styling the Login Form */
+.login-form {
+    background-color: white;
+    padding: 20px; /* Adjusted padding to fit smaller width */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 150%; /* Set exact width */
+    position: relative;
+    z-index: 2;
+    opacity: 1;
+    margin: 0 auto; /* Center horizontally */
+}
+
+/* Circular Logo Image Styling */
+.logo-image {
+    display: block;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 3px solid #ffdd00;
+    object-fit: cover;
+    opacity: 1;
+}
+
+/* Center align form text */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: center; /* Center align text */
+}
+
+.form-group label {
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+    font-weight: 500;
+    text-align: left;
+}
+
+.form-control {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 12px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #0172a7;
+    outline: none;
+    box-shadow: 0 0 5px rgba(1, 114, 167, 0.2);
+}
+
+/* Invalid Feedback Styling */
+.invalid-feedback {
+    color: #e74c3c;
+    font-size: 14px;
+}
+
+/* Password Visibility Toggle */
+.password-input-group {
+    position: relative;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+    font-size: 16px;
+    z-index: 2;
+    transition: color 0.3s;
+}
+
+.password-toggle-icon:hover {
+    color: #0172a7;
+}
+
+/* Alert Messages */
+.alert {
+    margin-bottom: 1rem;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+/* Center align the links in the login form */
+.login-form {
+    text-align: center;
+}
+
+.login-form a {
+    color: #0172a7;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.login-form a:hover {
+    text-decoration: underline;
+    color: #024796;
+}
+
+/* Remember Me Checkbox */
+/* Remember Me Checkbox */
+.form-check {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center align the text */
+    margin: 1rem 0;
+}
+
+.form-check-input {
+    margin-right: 10px; /* Space between checkbox and text */
+    align-self: flex-start; /* Keep checkbox aligned to the left */
+}
+
+.form-check-label {
+    color: #555;
+    font-size: 14px;
+}
+
+/* Button Styles */
+button[type="submit"] {
+    background-color: #0172a7;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #024796;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-form {
+        margin: 20px;
+        padding: 30px;
+    }
+}
